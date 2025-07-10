@@ -73,10 +73,12 @@ public class CommandTransfer extends BaseCommand {
         placeholders.put("{amount}", String.valueOf(amount));
         placeholders.put("{keytype}", KeyType.virtual_key.getFriendlyName());
         placeholders.put("{player}", player.getName());
+        placeholders.put("{sender}", player.getName());
+        placeholders.put("{target}", target.getName());
 
         Messages.transfer_sent_keys.sendMessage(player, placeholders);
 
-        Messages.transfer_received_keys.sendMessage(target, "{player}", player.getName());
+        Messages.transfer_received_keys.sendMessage(target, placeholders);
 
         EventManager.logEvent(EventType.event_key_transferred, target.getName(), player, crate, KeyType.virtual_key, amount);
     }
