@@ -20,7 +20,7 @@ import java.util.UUID;
 
 public class CommandTransfer extends BaseCommand {
 
-    @Command("transfer")
+    @Command("transferir")
     @Permission(value = "crazycrates.transfer", def = PermissionDefault.OP)
     public void transfer(Player player, @ArgName("crate") @Suggestion("crates") String crateName, @ArgName("player") @Suggestion("players") Player target, @ArgName("amount") @Suggestion("numbers") int amount) {
         if (crateName.isBlank()) {
@@ -72,7 +72,6 @@ public class CommandTransfer extends BaseCommand {
         placeholders.put("{crate}", fancyName);
         placeholders.put("{amount}", String.valueOf(amount));
         placeholders.put("{keytype}", KeyType.virtual_key.getFriendlyName());
-        placeholders.put("{player}", player.getName());
         placeholders.put("{sender}", player.getName());
         placeholders.put("{target}", target.getName());
 

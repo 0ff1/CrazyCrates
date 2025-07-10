@@ -4,6 +4,7 @@ import com.badbones69.crazycrates.paper.CrazyCrates;
 import com.badbones69.crazycrates.paper.api.enums.Messages;
 import com.badbones69.crazycrates.paper.api.enums.other.Plugins;
 import com.badbones69.crazycrates.paper.api.objects.Crate;
+import com.badbones69.crazycrates.paper.commands.crates.types.BaseCommand;
 import com.badbones69.crazycrates.paper.managers.BukkitUserManager;
 import com.badbones69.crazycrates.paper.tasks.crates.CrateManager;
 import dev.triumphteam.cmd.bukkit.annotation.Permission;
@@ -23,9 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-@Command(value = "keys", alias = { "key" })
-@Description("Views the amount of keys you/others have.")
-public class CommandKey {
+public class CommandKey extends BaseCommand {
 
     private final CrazyCrates plugin = CrazyCrates.getPlugin();
 
@@ -42,8 +41,8 @@ public class CommandKey {
         getKeys(player, player, Messages.virtual_keys_header.getMessage(player, placeholders), Messages.no_virtual_keys.getMessage(player));
     }
 
-    @Command("view")
-    @Permission("crazycrates.keys-others")
+    @Command("ver")
+    @Permission(value = "crazycrates.keys-others")
     public void view(CommandSender sender, @ArgName("player") @Optional @Suggestion("players") Player target) {
         if (target == null) {
             if (sender instanceof Player player) {
