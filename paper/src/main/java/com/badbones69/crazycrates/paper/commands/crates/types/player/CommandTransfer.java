@@ -38,6 +38,9 @@ public class CommandTransfer extends BaseCommand {
             return;
         }
 
+        if (amount <= 0)
+            return;
+
         final UUID uuid = player.getUniqueId();
         final UUID receiver = target.getUniqueId();
 
